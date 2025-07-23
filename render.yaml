@@ -1,9 +1,9 @@
 services:
   - type: web
     name: quickbhandar
-    env: dotnet
+    env: docker
     plan: free
     branch: main
     buildCommand: "dotnet publish -c Release -o out"
-    startCommand: "dotnet out/QuickBhandar.dll"
+    startCommand: "dotnet out/QuickBhandarWeb.dll"
     autoDeploy: true
