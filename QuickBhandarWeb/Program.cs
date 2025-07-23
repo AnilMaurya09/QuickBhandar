@@ -1,16 +1,25 @@
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSession(); // Add this
 
-// Add services to the container.
+// ✅ Configure Kestrel to use PORT from Render
+builder.WebHost.ConfigureKestrel(options =>
+{
+    var port = Environment.GetEnvironmentVariable("PORT") ?? "5000"; // Default 5000 if PORT not set
+    options.ListenAnyIP(Convert.ToInt32(port));
+});
+
+// ✅ Add services
+builder.Services.AddSession();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+// ✅ Enable Session Middleware
 app.UseSession();
-// Configure the HTTP request pipeline.
+
+// ✅ Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -21,6 +30,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// ✅ Default Route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
