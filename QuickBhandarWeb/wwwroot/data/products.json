@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "Name": "Product A",
+    "ImageUrl": "/images/thumb-tomatoketchup.png",
+    "Price": 499,
+    "Description": "Trending product A",
+    "Category": "Juices",
+    "IsTrending": true,
+    "IsBestSelling": false,
+    "IsJustArrived": true,
+    "IsMostPopular": false
+  },
+  {
+    "Id": 2,
+    "Name": "Product B",
+    "ImageUrl": "/images/thumb-tomatoketchup.png",
+    "Price": 299,
+    "Description": "Popular product B",
+    "Category": "Juices",
+    "IsTrending": true,
+    "IsBestSelling": true,
+    "IsJustArrived": false,
+    "IsMostPopular": true
+  }
+]

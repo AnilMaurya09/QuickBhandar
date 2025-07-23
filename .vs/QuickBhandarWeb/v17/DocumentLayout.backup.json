@@ -1,0 +1,241 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\views\\home\\trackorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\views\\home\\trackorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\views\\home\\orders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\views\\home\\orders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\wwwroot\\js\\cart.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\wwwroot\\js\\cart.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\views\\home\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\views\\home\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\views\\shared\\_trendingproducts.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\views\\shared\\_trendingproducts.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\views\\home\\wishlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\views\\home\\wishlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\wwwroot\\data\\products.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\wwwroot\\data\\products.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|c:\\users\\hp\\desktop\\quickbhandarweb\\quickbhandarweb\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78940BE3-6B62-4A91-85E0-6B3F39D4D9E4}|QuickBhandarWeb\\QuickBhandarWeb.csproj|solutionrelative:quickbhandarweb\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\wwwroot\\css\\style.css",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\wwwroot\\css\\style.css",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\wwwroot\\css\\style.css",
+              "RelativeToolTip": "QuickBhandarWeb\\wwwroot\\css\\style.css",
+              "ViewState": "AgIAAD0CAAAAAAAAAAAwwE4CAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-23T06:16:18.29Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TrackOrder.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Home\\TrackOrder.cshtml",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\Views\\Home\\TrackOrder.cshtml",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Home\\TrackOrder.cshtml",
+              "RelativeToolTip": "QuickBhandarWeb\\Views\\Home\\TrackOrder.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-23T10:44:23.408Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Orders.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Home\\Orders.cshtml",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\Views\\Home\\Orders.cshtml",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Home\\Orders.cshtml",
+              "RelativeToolTip": "QuickBhandarWeb\\Views\\Home\\Orders.cshtml",
+              "ViewState": "AgIAADgAAAAAAAAAAAAUwE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-23T08:37:52.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "cart.js",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\wwwroot\\js\\cart.js",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\wwwroot\\js\\cart.js",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\wwwroot\\js\\cart.js",
+              "RelativeToolTip": "QuickBhandarWeb\\wwwroot\\js\\cart.js",
+              "ViewState": "AgIAAP0AAAAAmJmZmZkZwBMBAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-07-23T07:01:49.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "QuickBhandarWeb\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACMBAAAAwJmZmZnpv1MAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-23T06:40:23.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Wishlist.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Home\\Wishlist.cshtml",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\Views\\Home\\Wishlist.cshtml",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Home\\Wishlist.cshtml",
+              "RelativeToolTip": "QuickBhandarWeb\\Views\\Home\\Wishlist.cshtml",
+              "ViewState": "AgIAABoAAAAAMzMzMzMbwDYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-23T06:00:53.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "QuickBhandarWeb\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowEIAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T05:35:07.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Checkout.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Home\\Checkout.cshtml",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\Views\\Home\\Checkout.cshtml",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Home\\Checkout.cshtml",
+              "RelativeToolTip": "QuickBhandarWeb\\Views\\Home\\Checkout.cshtml",
+              "ViewState": "AgIAADgAAAAAZmZmZmYOwEQAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-23T08:23:50.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "products.json",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\wwwroot\\data\\products.json",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\wwwroot\\data\\products.json",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\wwwroot\\data\\products.json",
+              "RelativeToolTip": "QuickBhandarWeb\\wwwroot\\data\\products.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-23T05:32:14.266Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Models\\Product.cs",
+              "RelativeToolTip": "QuickBhandarWeb\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T05:29:05.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_TrendingProducts.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Shared\\_TrendingProducts.cshtml",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\Views\\Shared\\_TrendingProducts.cshtml",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Shared\\_TrendingProducts.cshtml",
+              "RelativeToolTip": "QuickBhandarWeb\\Views\\Shared\\_TrendingProducts.cshtml",
+              "ViewState": "AgIAAHwAAADgzMzMzMwwwIYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-23T04:40:06.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "QuickBhandarWeb\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAIwBkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T19:00:27.977Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "QuickBhandarWeb\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\QuickBhandarWeb\\QuickBhandarWeb\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "QuickBhandarWeb\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-22T14:53:07.976Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
