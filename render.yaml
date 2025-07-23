@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: quickbhandar
+    env: dotnet
+    plan: free
+    branch: main
+    buildCommand: "dotnet publish -c Release -o out"
+    startCommand: "dotnet out/QuickBhandar.dll"
+    autoDeploy: true
