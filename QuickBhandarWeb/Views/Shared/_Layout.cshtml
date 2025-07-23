@@ -403,9 +403,56 @@
             heartIcon?.classList.remove("disabled-icon");
         }
         };
+
+    // Register Service Worker
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js');
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(() => console.log('Service Worker Registered'))
+            .catch(err => console.log('Service Worker Registration Failed', err));
     }
+
+    // PWA Install Prompt Handling
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // Create floating install button dynamically
+        if (!document.getElementById('install-btn') && !localStorage.getItem('pwa-installed')) {
+            const installBtn = document.createElement('button');
+            installBtn.id = 'install-btn';
+            installBtn.innerText = 'Install Quick Bhandar';
+            installBtn.style.position = 'fixed';
+            installBtn.style.bottom = '15px';
+            installBtn.style.left = '50%';
+            installBtn.style.transform = 'translateX(-50%)';
+            installBtn.style.background = '#4CAF50';
+            installBtn.style.color = 'white';
+            installBtn.style.border = 'none';
+            installBtn.style.padding = '12px 20px';
+            installBtn.style.borderRadius = '6px';
+            installBtn.style.fontSize = '16px';
+            installBtn.style.cursor = 'pointer';
+            installBtn.style.zIndex = '9999';
+
+            document.body.appendChild(installBtn);
+
+            // When user clicks Install button
+            installBtn.addEventListener('click', async () => {
+                installBtn.style.display = 'none';
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    console.log('✅ User installed the app');
+                    localStorage.setItem('pwa-installed', 'true');
+                } else {
+                    console.log('❌ User dismissed the install prompt');
+                }
+                deferredPrompt = null;
+            });
+        }
+    });
 </script>
 
 
