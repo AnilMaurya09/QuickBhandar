@@ -3,7 +3,11 @@ wwwroot\css\normalize.css
 wwwroot\css\style.css
 wwwroot\css\vendor.css
 wwwroot\data\products.json
+wwwroot\data\SQLQuery.sql
 wwwroot\favicon.ico
+wwwroot\icons\icon-192.png
+wwwroot\icons\icon-1921.png
+wwwroot\icons\icon-512.png
 wwwroot\images\ad-bg-pattern.png
 wwwroot\images\ad-image-1.png
 wwwroot\images\ad-image-2.png
@@ -43,6 +47,8 @@ wwwroot\images\product-thumb-12.jpg
 wwwroot\images\product-thumb-13.jpg
 wwwroot\images\product-thumb-14.jpg
 wwwroot\images\product-thumb-2.png
+wwwroot\images\product\icon-512.png
+wwwroot\images\product\thumb-tomatoketchup.png
 wwwroot\images\reviewer-1.jpg
 wwwroot\images\reviewer-2.jpg
 wwwroot\images\reviewer-3.jpg
@@ -62,7 +68,6 @@ wwwroot\images\thumb-milk.png
 wwwroot\images\thumb-orange-juice.png
 wwwroot\images\thumb-raspberries.png
 wwwroot\images\thumb-tomatoes.png
-wwwroot\images\thumb-tomatoketchup.png
 wwwroot\images\thumb-tuna.jpg
 wwwroot\js\cart.js
 wwwroot\js\jquery-1.11.0.min.js
@@ -126,3 +131,5 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\manifest.json
+wwwroot\service-worker.js

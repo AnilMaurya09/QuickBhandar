@@ -14,33 +14,34 @@
                     <h4 class="mb-3">Billing Details</h4>
                     <form id="checkoutForm">
                         <div class="row g-3">
+                            <input type="hidden" name="UserId" value="@ViewBag.User.Id" />
                             <div class="col-md-6">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="form-control" required>
+                                <input type="text" class="form-control" name="FirstName" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" required>
+                                <input type="text" class="form-control" name="LastName" required>
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control" required>
+                                <input type="email" class="form-control" name="Email" required>
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Phone</label>
-                                <input type="text" class="form-control" required>
+                                <input type="text" class="form-control" name="Phone" value="@ViewBag.User.MobileNumber" required>
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Address</label>
-                                <input type="text" class="form-control" placeholder="Street address" required>
+                                <input type="text" class="form-control" name="Address" placeholder="Street address" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">City</label>
-                                <input type="text" class="form-control" required>
+                                <input type="text" class="form-control" name="City" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Zip Code</label>
-                                <input type="text" class="form-control" required>
+                                <input type="text" class="form-control" name="Zip" required>
                             </div>
                         </div>
                     </form>
@@ -49,11 +50,11 @@
                 <div class="card shadow-sm border-0 p-4">
                     <h4 class="mb-3">Payment Method</h4>
                     <div class="form-check mb-2">
-                        <input class="form-check-input" type="radio" name="payment" id="cod" checked>
+                        <input class="form-check-input" type="radio" name="Payment" id="cod" checked>
                         <label class="form-check-label" for="cod">Cash on Delivery</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="payment" id="card">
+                        <input class="form-check-input" type="radio" name="Payment" id="card">
                         <label class="form-check-label" for="card">Credit/Debit Card</label>
                     </div>
                 </div>
@@ -61,24 +62,28 @@
 
             <!-- Order Summary -->
             <div class="col-lg-5">
-                <div class="card shadow-sm border-0 p-4" id="orderSummary">
+                <div class="card shadow-sm border-0 p-4">
                     <h4 class="mb-3">Your Order</h4>
-                    <ul class="list-group mb-3" id="orderItems">
-                        <!-- Dynamic items from localStorage -->
+                    <ul class="list-group mb-3">
+                        @foreach (var item in ViewBag.CartItems)
+                        {
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>@item.Name (x @item.Quantity)</span>
+                                <strong>₹@item.Total</strong>
+                            </li>
+                        }
+                        <li class="list-group-item d-flex justify-content-between fw-bold">
+                            <span>Total</span>
+                            <strong>₹@ViewBag.TotalAmount</strong>
+                        </li>
                     </ul>
-                    <button class="w-100 btn btn-primary btn-lg mt-3" type="button" id="placeOrderBtn">
+                    <button class="w-100 btn btn-primary btn-lg mt-3" type="submit" id="placeOrderBtn">
                         Place Order
                     </button>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        if (typeof loadOrderSummary === "function") {
-            loadOrderSummary();
-        }
-    });
-</script>
 

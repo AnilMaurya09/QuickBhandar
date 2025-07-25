@@ -158,10 +158,11 @@
                                 <a href="#">E-Gift Cards</a>
                                 <a href="#">FAQ's</a>
                                 <a href="#">Account Privacy</a>
-                                <a href="#" onclick="logout()">Log Out</a>
+                                <a href="#" onclick="event.preventDefault(); logout();">Log Out</a>
+
                             </div></div>
                         <li>
-                            <a href="javascript:void(0)" id="heartIcon" class="rounded-circle bg-light p-2 mx-1 disabled-icon">
+                            <a href="/Home/Wishlist" id="heartIcon" class="rounded-circle bg-light p-2 mx-1 disabled-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#heart"></use></svg>
                             </a>
                         </li>
@@ -308,154 +309,73 @@
     @await RenderSectionAsync("Scripts", required: false)
 
     <script>
-                function sendOTP() {
-            const mobile = document.getElementById("mobileInput").value;
-            if (mobile.length === 10) {
-                fetch('/Auth/SendOtp', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ mobileNumber: mobile })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        document.getElementById("otpSection").style.display = "block";
-                    } else {
-                        alert(data.message);
-                    }
-                });
+       window.onload = function () {
+                var isLoggedIn = '@isLoggedIn'.toLowerCase() === 'true';
+                document.getElementById("userLi").style.display = isLoggedIn ? "none" : "block";
+                document.getElementById("userDropdown").style.display = isLoggedIn ? "block" : "none";
+                   // Enable/Disable Cart & Wishlist Icons
+            const cartSection = document.getElementById("cartSection");
+            const heartIcon = document.getElementById("heartIcon");
+
+            if (!isLoggedIn) {
+                cartSection?.classList.add("disabled-icon");
+                heartIcon?.classList.add("disabled-icon");
             } else {
-                alert("Enter valid 10-digit number");
+                cartSection?.classList.remove("disabled-icon");
+                heartIcon?.classList.remove("disabled-icon");
             }
+            };
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(() => console.log('Service Worker Registered'))
+                .catch(err => console.log('Service Worker Registration Failed', err));
         }
 
-        function verifyOTP() {
-            const mobile = document.getElementById("mobileInput").value;
-            const otp = document.getElementById("otpInput").value;
+        // PWA Install Prompt Handling
+        let deferredPrompt;
 
-            fetch('/Auth/VerifyOtp', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ mobileNumber: mobile, otp: otp })
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    document.getElementById("loginPopup").style.display = "none";
-                    document.getElementById("userLi").style.display = "none";
-                    document.getElementById("userDropdown").style.display = "block";
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
 
-                    // Optional icon enabling
-                    document.getElementById("heartIcon")?.classList.remove("disabled-icon");
-                    document.getElementById("cartSection")?.classList.remove("disabled-icon");
+            // Create floating install button dynamically
+            if (!document.getElementById('install-btn') && !localStorage.getItem('pwa-installed')) {
+                const installBtn = document.createElement('button');
+                installBtn.id = 'install-btn';
+                installBtn.innerText = 'Install Quick Bhandar';
+                installBtn.style.position = 'fixed';
+                installBtn.style.bottom = '15px';
+                installBtn.style.left = '50%';
+                installBtn.style.transform = 'translateX(-50%)';
+                installBtn.style.background = '#4CAF50';
+                installBtn.style.color = 'white';
+                installBtn.style.border = 'none';
+                installBtn.style.padding = '12px 20px';
+                installBtn.style.borderRadius = '6px';
+                installBtn.style.fontSize = '16px';
+                installBtn.style.cursor = 'pointer';
+                installBtn.style.zIndex = '9999';
 
-                } else {
-                    alert(data.message || "Invalid OTP");
-                }
-            });
-        }
+                document.body.appendChild(installBtn);
 
-        function toggleDropdown() {
-            const dropdown = document.getElementById("userDropdown");
-            dropdown.classList.toggle("show");
-        }
-
-              function logout() {
-            fetch('/Auth/Logout')
-                .then(() => {
-                    document.getElementById("userLi").style.display = "block";
-                    document.getElementById("userDropdown").style.display = "none";
+                // When user clicks Install button
+                installBtn.addEventListener('click', async () => {
+                    installBtn.style.display = 'none';
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        console.log('✅ User installed the app');
+                        localStorage.setItem('pwa-installed', 'true');
+                    } else {
+                        console.log('❌ User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
                 });
-        }
-
-        // On icon click
-        document.getElementById("loginIcon").addEventListener("click", function () {
-            document.getElementById("loginPopup").style.display = "block";
-        });
-
-        // Close dropdown if clicked outside
-        window.addEventListener("click", function (e) {
-            const dropdown = document.getElementById("userDropdown");
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove("show");
             }
         });
-              function closePopup() {
-            document.getElementById("loginPopup").style.display = "none";
-        }
-            window.onload = function () {
-            var isLoggedIn = '@isLoggedIn'.toLowerCase() === 'true';
-            document.getElementById("userLi").style.display = isLoggedIn ? "none" : "block";
-            document.getElementById("userDropdown").style.display = isLoggedIn ? "block" : "none";
-               // Enable/Disable Cart & Wishlist Icons
-        const cartSection = document.getElementById("cartSection");
-        const heartIcon = document.getElementById("heartIcon");
-
-        if (!isLoggedIn) {
-            cartSection?.classList.add("disabled-icon");
-            heartIcon?.classList.add("disabled-icon");
-        } else {
-            cartSection?.classList.remove("disabled-icon");
-            heartIcon?.classList.remove("disabled-icon");
-        }
-        };
-
-    // Register Service Worker
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js')
-            .then(() => console.log('Service Worker Registered'))
-            .catch(err => console.log('Service Worker Registration Failed', err));
-    }
-
-    // PWA Install Prompt Handling
-    let deferredPrompt;
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-
-        // Create floating install button dynamically
-        if (!document.getElementById('install-btn') && !localStorage.getItem('pwa-installed')) {
-            const installBtn = document.createElement('button');
-            installBtn.id = 'install-btn';
-            installBtn.innerText = 'Install Quick Bhandar';
-            installBtn.style.position = 'fixed';
-            installBtn.style.bottom = '15px';
-            installBtn.style.left = '50%';
-            installBtn.style.transform = 'translateX(-50%)';
-            installBtn.style.background = '#4CAF50';
-            installBtn.style.color = 'white';
-            installBtn.style.border = 'none';
-            installBtn.style.padding = '12px 20px';
-            installBtn.style.borderRadius = '6px';
-            installBtn.style.fontSize = '16px';
-            installBtn.style.cursor = 'pointer';
-            installBtn.style.zIndex = '9999';
-
-            document.body.appendChild(installBtn);
-
-            // When user clicks Install button
-            installBtn.addEventListener('click', async () => {
-                installBtn.style.display = 'none';
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    console.log('✅ User installed the app');
-                    localStorage.setItem('pwa-installed', 'true');
-                } else {
-                    console.log('❌ User dismissed the install prompt');
-                }
-                deferredPrompt = null;
-            });
-        }
-    });
-</script>
-
-
+    </script>
     <style>
         /* Mobile Input with +91 */
         .mobile-input-wrapper {

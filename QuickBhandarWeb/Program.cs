@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using QuickBhandarWeb.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // ✅ Configure Kestrel to use PORT from Render
@@ -10,6 +14,9 @@ builder.WebHost.ConfigureKestrel(options =>
 // ✅ Add services
 builder.Services.AddSession();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
@@ -27,7 +34,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+//builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+//    .AddEntityFrameworkStores<ApplicationDbContext>();
 app.UseAuthorization();
 
 // ✅ Default Route

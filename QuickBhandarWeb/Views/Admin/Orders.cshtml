@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "Manage Orders";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml"; 
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Manage Orders</h2>
+
+    <!-- Filter Section -->
+    <div class="mb-3">
+        <label for="statusFilter" class="form-label">Filter by Status:</label>
+        <select id="statusFilter" class="form-select" onchange="filterOrders()">
+            <option value="">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+        </select>
+    </div>
+
+    <!-- Orders Table -->
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Customer</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersTable">
+                    @foreach (var order in ViewBag.AllOrders)
+                    {
+                        <tr data-status="@order.Status">
+                            <td>@order.Id</td>
+                            <td>@order.CustomerName</td>
+                            <td>₹@order.TotalAmount</td>
+                            <td>
+                                <span class="badge @(order.Status == "Completed" ? "bg-success" : "bg-warning")">
+                                    @order.Status
+                                </span>
+                            </td>
+                            <td>@order.Date</td>
+                            <td>
+                                <form method="post" asp-action="UpdateOrderStatus" asp-controller="Admin">
+                                    <input type="hidden" name="orderId" value="@order.Id" />
+                                    <select name="status" class="form-select form-select-sm d-inline w-auto">
+                                       @*  <option value="Pending" @(order.Status=="Pending" ? "selected" : "")>Pending</option>
+                                        <option value="Completed" @(order.Status=="Completed" ? "selected" : "")>Completed</option> *@
+                                    </select>
+                                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function filterOrders() {
+        var filter = document.getElementById('statusFilter').value.toLowerCase();
+        var rows = document.querySelectorAll('#ordersTable tr');
+        rows.forEach(row => {
+            var status = row.getAttribute('data-status').toLowerCase();
+            row.style.display = (filter === '' || status === filter) ? '' : 'none';
+        });
+    }
+</script>
+
+

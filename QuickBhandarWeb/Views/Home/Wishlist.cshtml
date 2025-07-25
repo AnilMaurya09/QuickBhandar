@@ -67,25 +67,3 @@
         }
     </div>
 </section>
-
-@section Scripts {
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const buttons = document.querySelectorAll('.btn-remove-wishlist');
-
-            buttons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const id = parseInt(btn.dataset.id);
-                    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-
-                    wishlist = wishlist.filter(pid => pid !== id);
-                    localStorage.setItem('wishlist', JSON.stringify(wishlist));
-
-                    // Reload to reflect UI
-                    location.reload();
-                });
-            });
-        });
-    </script>
-}

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuickBhandarWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2844863d6434a8c3ddecc7974f447e4f94e2a507")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuickBhandarWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuickBhandarWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model QuickBhandarWeb.Models.Product
+@{
+    var products = ViewBag.Products as List<QuickBhandarWeb.Models.Product>;
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3 d-flex justify-content-between align-items-center">
+        Manage Products
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+            + Add New Product
+        </button>
+    </h2>
+
+    <!-- ✅ Product Table -->
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Stock</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in products)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Name</td>
+                    <td>₹@p.Price</td>
+                    <td>@p.Category</td>
+                    <td>@p.Stock</td>
+                    <td><img src="@p.ImageUrl" width="50" /></td>
+                    <td>
+                        <a href="/Admin/Products/@p.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/Admin/DeleteProduct/@p.Id" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Delete this product?')">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- ✅ Modal for Add/Edit -->
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="SaveProduct" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="Id" />
+
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label>Name</label>
+                        <input asp-for="Name" class="form-control" required />
+                    </div>
+
+                    <!-- Price -->
+                    <div class="mb-3">
+                        <label>Price</label>
+                        <input asp-for="Price" type="number" class="form-control" required />
+                    </div>
+
+                    <!-- Category -->
+                    <div class="mb-3">
+                        <label>Category</label>
+                        <input asp-for="Category" class="form-control" />
+                    </div>
+
+                    <!-- Stock -->
+                    <div class="mb-3">
+                        <label>Stock</label>
+                        <input asp-for="Stock" type="number" class="form-control" />
+                    </div>
+
+                    <!-- Image URL -->
+                    <div class="mb-3">
+                        <label>Upload Image</label>
+                        <input type="file" name="ImageFile" class="form-control" accept="image/*" />
+                    </div>
+
+
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label>Description</label>
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                    </div>
+
+                    <!-- Flags -->
+                    <div class="mb-3">
+                        <label class="form-label">Product Tags</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" asp-for="IsTrending" />
+                            <label class="form-check-label">Trending</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" asp-for="IsBestSelling" />
+                            <label class="form-check-label">Best Selling</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" asp-for="IsJustArrived" />
+                            <label class="form-check-label">Just Arrived</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" asp-for="IsMostPopular" />
+                            <label class="form-check-label">Most Popular</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Save Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
