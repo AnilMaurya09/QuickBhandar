@@ -20,16 +20,32 @@ namespace QuickBhandarWeb.Controllers
 
         public IActionResult Index()
         {
+            int userId = GetLoggedInUserId();
+            var products = _context.Products.ToList();
+
+            List<int> wishlistIds = new List<int>();
+            if (userId != 0)
+            {
+                wishlistIds = _context.Wishlist
+                    .Where(w => w.UserId == userId)
+                    .Select(w => w.ProductId)
+                    .ToList();
+            }
+
+            ViewBag.WishlistIds = wishlistIds;
+
             var viewModel = new HomePageProductViewModel
             {
-                TrendingProducts = _context.Products.Where(p => p.IsTrending).ToList(),
-                BestSellingProducts = _context.Products.Where(p => p.IsBestSelling).ToList(),
-                JustArrivedProducts = _context.Products.Where(p => p.IsJustArrived).ToList(),
-                MostPopularProducts = _context.Products.Where(p => p.IsMostPopular).ToList()
+                Products = products,
+                TrendingProducts = products.Where(p => p.IsTrending).ToList(),
+                BestSellingProducts = products.Where(p => p.IsBestSelling).ToList(),
+                JustArrivedProducts = products.Where(p => p.IsJustArrived).ToList(),
+                MostPopularProducts = products.Where(p => p.IsMostPopular).ToList()
             };
 
             return View(viewModel);
         }
+
 
         [HttpPost]
         public IActionResult AddToCart([FromBody] AddToCartRequest request)
@@ -136,7 +152,8 @@ namespace QuickBhandarWeb.Controllers
 
             ViewBag.User = user;
             ViewBag.CartItems = cartItems;
-            ViewBag.TotalAmount = cartItems.Sum(c => c.Total);
+             decimal total = cartItems.Sum(c => c.Total);
+            ViewBag.TotalAmount = total.ToString("0.00");
 
             return View();
         }
@@ -169,7 +186,7 @@ namespace QuickBhandarWeb.Controllers
         }
         public IActionResult Wishlist()
         {
-            int userId = GetLoggedInUserId(); // ✅ Your helper to get user ID from session/cookie
+            int userId = GetLoggedInUserId();
 
             List<Product> wishlistProducts = new List<Product>();
 
@@ -182,7 +199,8 @@ namespace QuickBhandarWeb.Controllers
                                     join p in _context.Products on w.ProductId equals p.Id
                                     where w.UserId == userId
                                     select p).ToList();
-
+            var wishlistIds = wishlistProducts.Select(p => p.Id).ToList();
+            ViewBag.WishlistIds = wishlistIds;
             return View(wishlistProducts);
         }
 

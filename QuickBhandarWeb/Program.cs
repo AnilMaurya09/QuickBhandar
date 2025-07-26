@@ -1,8 +1,18 @@
+using CloudinaryDotNet;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using QuickBhandarWeb.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("Cloudinary"));
+builder.Services.AddSingleton<Cloudinary>(sp =>
+{
+    var config = builder.Configuration.GetSection("Cloudinary").Get<CloudinarySettings>();
+    Account account = new Account(config.CloudName, config.ApiKey, config.ApiSecret);
+    return new Cloudinary(account);
+});
+
 
 // ✅ Configure Kestrel to use PORT from Render
 builder.WebHost.ConfigureKestrel(options =>

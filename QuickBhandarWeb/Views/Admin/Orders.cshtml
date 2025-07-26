@@ -47,10 +47,18 @@
                             <td>
                                 <form method="post" asp-action="UpdateOrderStatus" asp-controller="Admin">
                                     <input type="hidden" name="orderId" value="@order.Id" />
-                                    <select name="status" class="form-select form-select-sm d-inline w-auto">
-                                       @*  <option value="Pending" @(order.Status=="Pending" ? "selected" : "")>Pending</option>
-                                        <option value="Completed" @(order.Status=="Completed" ? "selected" : "")>Completed</option> *@
-                                    </select>
+                                   <select name="status" class="form-select form-select-sm d-inline w-auto">
+                                   @if (order.Status == "Pending")
+                                   {
+                                  <option value="Pending" selected>Pending</option>
+                                 <option value="Completed">Completed</option>
+                                 }
+                                 else
+                                 {
+                                     <option value="Pending">Pending</option>
+                                     <option value="Completed" selected>Completed</option>
+                                 }
+                                </select>
                                     <button type="submit" class="btn btn-primary btn-sm">Update</button>
                                 </form>
                             </td>
@@ -72,5 +80,3 @@
         });
     }
 </script>
-
-

@@ -20,6 +20,7 @@ namespace QuickBhandarWeb.Models
 }
 public class HomePageProductViewModel
 {
+    public List<Product> Products { get; set; }
     public List<Product> TrendingProducts { get; set; }
     public List<Product> BestSellingProducts { get; set; }
     public List<Product> JustArrivedProducts { get; set; }

@@ -1,0 +1,106 @@
+﻿@model List<Product>
+
+@{
+    var categories = Model.Select(p => p.Category).Distinct().ToList();
+}
+
+<section class="py-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="bootstrap-tabs product-tabs">
+                    <div class="tabs-header d-flex justify-content-between border-bottom my-5">
+                        <h3></h3>
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-link text-uppercase fs-6 active" data-category="All" data-bs-toggle="tab" href="#tab-all">All</a>
+                                @foreach (var category in categories)
+                                {
+                                    <a class="nav-link text-uppercase fs-6" data-category="@category" data-bs-toggle="tab" href="#tab-@category.Replace(" ", "")">@category</a>
+                                }
+                            </div>
+                        </nav>
+                    </div>
+
+                    <div class="tab-content" id="nav-tabContent">
+
+                        <!-- All Products Tab -->
+                        <div class="tab-pane fade show active" id="tab-all">
+                            <div id="allProducts" class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+                                @foreach (var product in Model)
+                                {
+                                     @Html.Partial("_ProductCard", product)
+                                }
+                            </div>
+                        </div>
+
+                        <!-- Category Tabs -->
+                        @foreach (var category in categories)
+                        {
+                            <div class="tab-pane fade" id="tab-@category.Replace(" ", "")">
+                                <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+                                    @foreach (var product in Model.Where(p => p.Category == category))
+                                    {
+                                        @Html.Partial("_ProductCard", product)
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.querySelector("#searchInput");
+    const allProductsContainer = document.querySelector("#allProducts");
+    const tabs = document.querySelectorAll("#nav-tab .nav-link");
+
+    // Initial placeholder
+    if (searchInput) {
+        searchInput.setAttribute("placeholder", "Search All Products");
+    }
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // Remove active class from all tabs
+            tabs.forEach(t => t.classList.remove("active"));
+
+            // Add active to clicked tab
+            this.classList.add("active");
+
+            // Get category name
+            const categoryName = this.textContent.trim();
+            if (searchInput) {
+                if (categoryName === "All") {
+                    searchInput.setAttribute("placeholder", "Search All Products");
+                } else {
+                    searchInput.setAttribute("placeholder", `Search ${categoryName}`);
+                }
+            }
+        });
+    });
+    if (searchInput && allProductsContainer) {
+        searchInput.addEventListener("keyup", function () {
+            const filter = this.value.toLowerCase();
+            const products = allProductsContainer.querySelectorAll(".product-item");
+
+            products.forEach(product => {
+                const name = product.querySelector("h3").innerText.toLowerCase();
+                if (name.includes(filter)) {
+                    product.closest(".col").style.display = "";
+                } else {
+                    product.closest(".col").style.display = "none";
+                }
+            });
+        });
+    }
+});
+</script>

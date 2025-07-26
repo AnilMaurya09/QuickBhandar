@@ -12,7 +12,7 @@
 <div class="container mt-4">
     <h2 class="mb-3 d-flex justify-content-between align-items-center">
         Manage Products
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal" id="openAddModal">
             + Add New Product
         </button>
     </h2>
@@ -41,9 +41,13 @@
                     <td>@p.Stock</td>
                     <td><img src="@p.ImageUrl" width="50" /></td>
                     <td>
-                        <a href="/Admin/Products/@p.Id" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="/Admin/DeleteProduct/@p.Id" class="btn btn-danger btn-sm"
-                           onclick="return confirm('Delete this product?')">Delete</a>
+                        <a href="javascript:void(0);" class="btn btn-warning btn-sm edit-btn" data-id="@p.Id">Edit</a>
+                        <form asp-action="DeleteProduct" asp-controller="Admin" asp-route-id="@p.Id" method="post" style="display:inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Delete this product?')">
+                        <i class="bi bi-trash"></i> Delete
+                    </button>
+                </form>
                     </td>
                 </tr>
             }
@@ -60,7 +64,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form asp-action="SaveProduct" method="post" enctype="multipart/form-data">
+                <form id="productForm" asp-action="SaveProduct" method="post" enctype="multipart/form-data">
                     <input type="hidden" asp-for="Id" />
 
                     <!-- Name -->
@@ -76,10 +80,33 @@
                     </div>
 
                     <!-- Category -->
-                    <div class="mb-3">
+                   @*  <div class="mb-3">
                         <label>Category</label>
                         <input asp-for="Category" class="form-control" />
-                    </div>
+                    </div> *@
+                   <div class="mb-3">
+    <label>Category</label>
+    <select id="categorySelect" name="Category" class="form-select">
+        <option value="">Select Category</option>
+        @foreach (var category in ViewBag.Categories as List<string>)
+        {
+            <option value="@category">@category</option>
+        }
+        <option value="__new__">+ Add New Category</option>
+    </select>
+</div>
+
+<!-- New Category Input with Check Icon -->
+<div class="mb-3 d-none" id="newCategoryDiv">
+    <label>New Category</label>
+    <div class="input-group">
+        <input type="text" id="newCategoryInput" class="form-control" placeholder="Enter new category" />
+        <button type="button" id="addCategoryBtn" class="btn btn-success">
+            <i class="bi bi-check-lg"></i> <!-- Bootstrap Icons -->
+        </button>
+    </div>
+</div>
+
 
                     <!-- Stock -->
                     <div class="mb-3">
@@ -87,12 +114,12 @@
                         <input asp-for="Stock" type="number" class="form-control" />
                     </div>
 
-                    <!-- Image URL -->
+                    <!-- Image -->
                     <div class="mb-3">
                         <label>Upload Image</label>
                         <input type="file" name="ImageFile" class="form-control" accept="image/*" />
+                        <img id="imagePreview" style="width:120px;display:none;margin-top:10px;" />
                     </div>
-
 
                     <!-- Description -->
                     <div class="mb-3">
@@ -121,11 +148,117 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-success">Save Product</button>
+                    <button type="submit" class="btn btn-success" id="saveBtn">Save Product</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const categorySelect = document.getElementById("categorySelect");
+    const newCategoryDiv = document.getElementById("newCategoryDiv");
+    const newCategoryInput = document.getElementById("newCategoryInput");
+    const addCategoryBtn = document.getElementById("addCategoryBtn");
+
+    // Show input when "Add New" selected
+    categorySelect.addEventListener("change", function () {
+        if (this.value === "__new__") {
+            newCategoryDiv.classList.remove("d-none");
+            newCategoryInput.focus();
+        } else {
+            newCategoryDiv.classList.add("d-none");
+        }
+    });
+
+    // When Check button clicked
+    addCategoryBtn.addEventListener("click", function () {
+        const newCategory = newCategoryInput.value.trim();
+        if (newCategory) {
+            // ✅ Add new category to select
+            const option = document.createElement("option");
+            option.value = newCategory;
+            option.text = newCategory;
+            categorySelect.insertBefore(option, categorySelect.querySelector('option[value="__new__"]'));
+
+            // ✅ Select the new category
+            categorySelect.value = newCategory;
+
+            // ✅ Hide input and clear
+            newCategoryInput.value = "";
+            newCategoryDiv.classList.add("d-none");
+        } else {
+            alert("Please enter a category name.");
+        }
+    });
+
+
+
+
+    const modalEl = document.getElementById("addProductModal");
+    const modal = new bootstrap.Modal(modalEl);
+    const form = document.getElementById("productForm");
+    const title = modalEl.querySelector(".modal-title");
+    const saveBtn = document.getElementById("saveBtn");
+    const imgPreview = document.getElementById("imagePreview");
+
+    // ✅ ADD MODE
+    document.getElementById("openAddModal").addEventListener("click", function () {
+        form.reset();
+        title.textContent = "Add New Product";
+        saveBtn.textContent = "Save Product";
+        imgPreview.style.display = "none";
+        modal.show();
+    });
+
+    // ✅ EDIT MODE
+    document.querySelectorAll(".edit-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            debugger
+            const id = this.dataset.id;
+            fetch(`/Admin/GetProduct/${id}`)
+                .then(res => res.json())
+                .then(data => {
+                    title.textContent = "Edit Product";
+                    saveBtn.textContent = "Update Product";
+
+                    // Fill form fields
+                    form.querySelector("[name='Id']").value = data.id;
+                    form.querySelector("[name='Name']").value = data.name;
+                    form.querySelector("[name='Price']").value = data.price;
+                    form.querySelector("[name='Category']").value = data.category;
+                    form.querySelector("[name='Stock']").value = data.stock;
+                    form.querySelector("[name='Description']").value = data.description;
+
+                    // Checkboxes
+                    form.querySelector("[name='IsTrending']").checked = data.isTrending;
+                    form.querySelector("[name='IsBestSelling']").checked = data.isBestSelling;
+                    form.querySelector("[name='IsJustArrived']").checked = data.isJustArrived;
+                    form.querySelector("[name='IsMostPopular']").checked = data.isMostPopular;
+
+                    // Image Preview
+                    if (data.imageUrl) {
+                        imgPreview.src = data.imageUrl;
+                        imgPreview.style.display = "block";
+                    } else {
+                        imgPreview.style.display = "none";
+                    }
+
+                    modal.show();
+                });
+        });
+    });
+
+    // Reset on close
+    modalEl.addEventListener("hidden.bs.modal", function () {
+        form.reset();
+        title.textContent = "Add New Product";
+        saveBtn.textContent = "Save Product";
+        imgPreview.style.display = "none";
+    });
+});
+
+</script>
 

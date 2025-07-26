@@ -218,7 +218,6 @@ function updateCartDisplay() {
     const cartBody = document.getElementById("cartBody");
     if (!cartBody) return;
 
-    // ✅ Call API to fetch cart items from DB
     fetch('/Home/GetCartItems')
         .then(res => res.json())
         .then(data => {
@@ -230,8 +229,8 @@ function updateCartDisplay() {
                         <a href="/" class="btn btn-primary">Continue Shopping</a>
                     </div>
                 `;
-                document.querySelector(".cart-total").textContent = "₹0";
-                document.querySelector(".badge.bg-primary").textContent = "0";
+                //document.querySelector(".cart-total").textContent = "₹0";
+                //document.querySelector(".badge.bg-primary").textContent = "0";
                 return;
             }
 
@@ -279,7 +278,8 @@ function updateCartDisplay() {
 
             document.querySelector(".cart-total").textContent = `₹${total}`;
         })
-        .catch(() => {
+        .catch(error => {
+            console.error("Error fetching cart items:", error);
             cartBody.innerHTML = `<div class="alert alert-danger text-center">Failed to load cart.</div>`;
         });
 }
